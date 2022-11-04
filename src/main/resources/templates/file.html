@@ -1,0 +1,17 @@
+<table>
+    <thead>
+    <tr>
+        <th>Filename</th>
+        <th>Download</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${files.empty}">
+        <td colspan="2">Directory is empty</td>
+    </tr>
+    <tr th:each="file : ${files}">
+        <td><span th:text="${file}">Filename</span></td>
+        <td><a th:href="@{/download/{filename}(filename=${file})}">Download</a></td>
+    </tr>
+    </tbody>
+</table>

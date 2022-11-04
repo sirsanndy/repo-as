@@ -1,0 +1,5 @@
+server:
+  port: 9000
+dir:
+  home:
+    path: "/home/ubuntu/project/repo"
