@@ -35,20 +35,14 @@ public class DownloadController extends DefaultController {
     @GetMapping("/{filename}")
     ResponseEntity<FileSystemResource> downloadFile(@PathVariable(name = "filename") String filename, HttpServletRequest request) {
         getClientIp(request);
-        try {
-            LOG.info("------------- Download file {} request from {} started -------------", filename, clientIp);
-            File file = downloadService.downloadFileByFilename(homeDir, filename);
-            long fileLength = file.length();
-            HttpHeaders respHeaders = new HttpHeaders();
-            respHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            respHeaders.setContentLength(fileLength);
-            respHeaders.setContentDispositionFormData("attachment", filename);
-            return new ResponseEntity<>(new FileSystemResource(file), respHeaders, HttpStatus.OK);
-        } catch (Exception e) {
-            LOG.error("Error when processing download file {} request with error message : {}", filename, e.getMessage());
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        } finally {
-            LOG.info("------------- Download file {} request from {} finished -------------", filename, clientIp);
-        }
+        LOG.info("------------- Download file {} request from {} started -------------", filename, clientIp);
+        File file = downloadService.downloadFileByFilename(homeDir, filename);
+        long fileLength = file.length();
+        HttpHeaders respHeaders = new HttpHeaders();
+        respHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        respHeaders.setContentLength(fileLength);
+        respHeaders.setContentDispositionFormData("attachment", filename);
+        LOG.info("------------- Download file {} request from {} finished -------------", filename, clientIp);
+        return new ResponseEntity<>(new FileSystemResource(file), respHeaders, HttpStatus.OK);
     }
 }
