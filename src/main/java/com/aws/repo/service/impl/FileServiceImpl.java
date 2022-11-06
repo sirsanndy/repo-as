@@ -33,7 +33,7 @@ public class FileServiceImpl implements FileService {
                 LOG.info("List of files in {} being collected", directory);
                 return collect;
             } catch (IOException e) {
-                LOG.error("Error occurred when get list of files in directory {} with error message : {}", directory, e.getMessage());
+                LOG.error("Error occurred when get list of files in directory {} with error message : ", directory, e);
                 throw new FileServiceException(e.getMessage());
             }
         } else {
