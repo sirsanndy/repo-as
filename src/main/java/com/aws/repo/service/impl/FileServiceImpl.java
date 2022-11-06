@@ -34,7 +34,7 @@ public class FileServiceImpl implements FileService {
                 return collect;
             } catch (IOException e) {
                 LOG.error("Error occurred when get list of files in directory {} with error message : ", directory, e);
-                throw new FileServiceException(e.getMessage());
+                throw new FileServiceException("Error occurred when get list of files");
             }
         } else {
             throw new FileServiceException("Directory can't be null or empty spaces");

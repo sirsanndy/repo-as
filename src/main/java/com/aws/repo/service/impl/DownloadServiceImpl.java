@@ -35,7 +35,7 @@ public class DownloadServiceImpl implements DownloadService {
                 return new File(filePath);
             } catch (IOException e){
                 LOG.error("Error occurred when get filePath by filename {} in directory {} with error message : {}", filename,directory, e.getMessage());
-                throw new DownloadServiceException(e.getMessage());
+                throw new DownloadServiceException(String.format("Error occurred when get %s to download", filename));
             }
         } else {
             LOG.error("Directory and filename can't be null or empty");
