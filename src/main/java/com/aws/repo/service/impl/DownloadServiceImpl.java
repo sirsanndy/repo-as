@@ -34,7 +34,7 @@ public class DownloadServiceImpl implements DownloadService {
                 LOG.info("Find {} filePath of {} in directory {} done", filePath, filename, directory);
                 return new File(filePath);
             } catch (IOException e){
-                LOG.error("Error occurred when get filePath by filename {} in directory {} with error message : {}", filename,directory, e.getMessage());
+                LOG.error("Error occurred when get filePath by filename {} in directory {} with error message : ", filename,directory, e);
                 throw new DownloadServiceException(String.format("Error occurred when get %s to download", filename));
             }
         } else {
