@@ -30,16 +30,9 @@ public class FileController extends DefaultController {
     @GetMapping
     String getFile(Model model, HttpServletRequest request) {
         getClientIp(request);
-        try {
-            LOG.info("------------- Get list of files in directory {} request from {} started -------------", homeDir, clientIp);
-            model.addAttribute("files", fileService.getListOfFiles(homeDir));
-            return "file";
-        } catch (Exception e) {
-            LOG.error("Error occurred when get file list in directory {} request with error message : {}", homeDir, e.getMessage());
-            model.addAttribute("errorMessage", e.getMessage());
-            return "error";
-        } finally {
-            LOG.info("------------- Get list of files in directory {} request from {} finished -------------", homeDir, clientIp);
-        }
+        LOG.info("------------- Get list of files in directory {} request from {} started -------------", homeDir, clientIp);
+        model.addAttribute("files", fileService.getListOfFiles(homeDir));
+        LOG.info("------------- Get list of files in directory {} request from {} finished -------------", homeDir, clientIp);
+        return "file";
     }
 }
