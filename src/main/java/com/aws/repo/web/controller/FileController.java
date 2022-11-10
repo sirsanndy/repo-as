@@ -1,4 +1,4 @@
-package com.aws.repo.web;
+package com.aws.repo.web.controller;
 
 import com.aws.repo.service.FileService;
 import com.aws.repo.util.DefaultController;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Objects;
 
 @Controller
 @RequestMapping("/files")
