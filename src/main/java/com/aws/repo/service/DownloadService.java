@@ -1,7 +1,8 @@
 package com.aws.repo.service;
 
-import java.io.File;
+import com.aws.repo.dto.DownloadResponse;
+import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
 public interface DownloadService {
-    File downloadFileByFilename(String directory, String filename);
+    DownloadResponse<StreamingResponseBody> downloadFileByFilename(String directory, String filename);
 }
